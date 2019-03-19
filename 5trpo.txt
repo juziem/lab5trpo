@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+
+namespace ConsoleApp2
+{
+    [TestFixture]
+    class testCase
+    {
+        [TestCase]
+        public void Convert()
+        {
+            function f = new function();
+            Assert.AreEqual(2.54, f.conv(1));
+
+            Assert.AreEqual(2.54, f.conv(-1));
+
+            Assert.AreEqual(2.54, f.conv(double.MaxValue + 1));
+        }
+
+        [TestCase]
+        public void Even()
+        {
+            function f = new function();
+            Assert.AreEqual(true, f.chet(4));
+            Assert.AreEqual(false, f.chet(5));
+        }
+
+        [TestCase]
+        public void Max()
+        {
+            int[] m = new int[3] { 0, -1, 5 };
+            int[] m2 = new int[] {  };
+
+
+            function f = new function();
+            Assert.AreEqual(5, f.max(m));
+        }
+
+        [TestCase]
+        public void Ost()
+        {
+            function f = new function();
+            Assert.AreEqual(2, f.ost(7,5));
+            Assert.AreEqual(2, f.ost(7, 0));
+        }
+    }
+
+   
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class function
+    {
+        public double conv(double dm)
+        {
+            double sm = dm * 2.54;
+            return (sm);
+        }
+
+        public bool chet(int c)
+        {
+            if (c % 2 == 0)
+                return true;
+            else
+                return false;
+        }
+
+        public int max(int[] m)
+        {
+            int tmp = m[0];
+
+            for (int i = 0; i < m.Length; i++)
+            {
+                if (m[i] > tmp)
+                    tmp = m[i];                               
+            }
+            return (tmp);
+        }
+
+        public int ost(int a,int b)
+        {
+            return (a % b);
+        }
+    }
+}
+
+
+
